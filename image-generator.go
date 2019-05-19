@@ -11,7 +11,7 @@ func generateImage(bobPath, text, outputPath string) error {
 	}
 	board := gg.NewContextForImage(image)
 	board.SetHexColor("#ffffff")
-	err = board.LoadFontFace("/usr/share/fonts/TTF/DejaVuSansMono-Bold.ttf", 30)
+	err = board.LoadFontFace("font/impact.ttf", 30)
 	if err != nil {
 		return err
 	}
