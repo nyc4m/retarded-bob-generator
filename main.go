@@ -22,6 +22,6 @@ func main() {
 	case true:
 		fmt.Println(translated)
 	case false:
-		generateImage("./bob.png", translated, outputPath)
+		generateImage("./bob_source.png", translated, outputPath)
 	}
 }

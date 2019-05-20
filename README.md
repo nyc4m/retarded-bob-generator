@@ -2,7 +2,7 @@
 
 Generate this mainstream meme easier, with one command line ! :joy::100::ok_hand:
 
-![Spongebob](./bob.png)
+![Spongebob](./bob_source.png)
 
 
 
