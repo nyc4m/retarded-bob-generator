@@ -2,16 +2,14 @@ package main
 
 import (
 	"github.com/fogleman/gg"
+	"golang.org/x/image/font"
 	"image"
 )
 
-func generateImage(bobImage image.Image, text, outputPath string) error {
+func generateImage(bobImage image.Image, fontFace font.Face, text, outputPath string) error {
 	board := gg.NewContextForImage(bobImage)
 	board.SetHexColor("#ffffff")
-	err := board.LoadFontFace("res/font/impact.ttf", 30)
-	if err != nil {
-		return err
-	}
+	board.SetFontFace(fontFace)
 	widthOfText, _ := board.MeasureString(text)
 	startWidthOfImage := board.Width()/2 - int(widthOfText/2)
 	board.DrawString(text, float64(startWidthOfImage), 350)
