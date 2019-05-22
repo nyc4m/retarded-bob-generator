@@ -2,16 +2,13 @@ package main
 
 import (
 	"github.com/fogleman/gg"
+	"image"
 )
 
-func generateImage(bobPath, text, outputPath string) error {
-	image, err := gg.LoadPNG(bobPath)
-	if err != nil {
-		return err
-	}
-	board := gg.NewContextForImage(image)
+func generateImage(bobImage image.Image, text, outputPath string) error {
+	board := gg.NewContextForImage(bobImage)
 	board.SetHexColor("#ffffff")
-	err = board.LoadFontFace("res/font/impact.ttf", 30)
+	err := board.LoadFontFace("res/font/impact.ttf", 30)
 	if err != nil {
 		return err
 	}

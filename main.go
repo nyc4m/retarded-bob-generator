@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
+	"github.com/fogleman/gg"
 )
 
 func main() {
@@ -22,6 +23,10 @@ func main() {
 	case true:
 		fmt.Println(translated)
 	case false:
-		generateImage("./res/bob_source.png", translated, outputPath)
+		bobImage, err := gg.LoadPNG("./res/bob_source.png")
+		if err != nil {
+			fmt.Println(err.Error())
+		}
+		generateImage(bobImage, translated, outputPath)
 	}
 }
