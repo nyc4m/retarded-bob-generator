@@ -32,3 +32,7 @@ $ ./retarded-bob-generator --help
 ```
 
 The text is auto centered, you really just have to run one command :sunglasses:
+
+## Todo
+
+Could be great to autoresize the text to make it fit the picture :slightly_smiling_face:
