@@ -1,10 +1,12 @@
-package main
+package text
 
 import (
 	"strings"
 )
 
-func toBobRetardedString(cleverSentence string) (retardedSentence string) {
+//ToBobRetardedString Translate to a bob retarded string
+//so 'Hello world', becomes 'HeLlO wOrLd'
+func ToBobRetardedString(cleverSentence string) (retardedSentence string) {
 	characters := strings.Split(cleverSentence, "")
 	for index, char := range characters {
 		if index%2 == 0 {

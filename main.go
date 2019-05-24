@@ -7,6 +7,9 @@ import (
 	"github.com/GeertJohan/go.rice"
 	"github.com/golang/freetype/truetype"
 	"image"
+	"io/ioutil"
+	imageBob "retarded-bob-generator/image"
+	"retarded-bob-generator/text"
 )
 
 func main() {
@@ -23,7 +26,7 @@ func main() {
 
 	flag.Parse()
 
-	translated = toBobRetardedString(toTranslate)
+	translated = text.ToBobRetardedString(toTranslate)
 	switch toText {
 	case true:
 		fmt.Println(translated)
@@ -47,6 +50,11 @@ func handleImageGeneration(fileBox *rice.Box, translated, outputPath string) err
 	if err != nil {
 		return err
 	}
-	generateImage(bobImage, fontFace, translated, outputPath)
+	buffer := imageBob.GenerateBobMeme(bobImage, fontFace, translated)
+	exportImage(outputPath, buffer.Bytes())
 	return nil
+}
+
+func exportImage(outputPath string, imageBuffer []byte) {
+	ioutil.WriteFile(outputPath, imageBuffer, 0644)
 }
