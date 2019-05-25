@@ -5,7 +5,6 @@ import (
 	"flag"
 	"fmt"
 	"github.com/GeertJohan/go.rice"
-	"github.com/golang/freetype/truetype"
 	"image"
 	"io/ioutil"
 	imageBob "retarded-bob-generator/image"
@@ -45,12 +44,11 @@ func handleImageGeneration(fileBox *rice.Box, translated, outputPath string) err
 		return err
 	}
 	bobImage, _, err := image.Decode(bytes.NewBuffer(imageRaw))
-	parsedFont, err := truetype.Parse(fontRaw)
-	fontFace := truetype.NewFace(parsedFont, &truetype.Options{Size: 50})
+	font, err := imageBob.LoadFontFromBytes(fontRaw, 20)
 	if err != nil {
 		return err
 	}
-	buffer := imageBob.GenerateBobMeme(bobImage, fontFace, translated)
+	buffer := imageBob.GenerateBobMeme(bobImage, font, translated)
 	exportImage(outputPath, buffer.Bytes())
 	return nil
 }
