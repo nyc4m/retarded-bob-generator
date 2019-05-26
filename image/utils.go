@@ -5,7 +5,8 @@ import (
 	"golang.org/x/image/font"
 )
 
-//LoadFontFromFile loads the font from a specified path
+//LoadFontFromBytes loads the font from a specified path
+//Return a font.Face with a specified size
 func LoadFontFromBytes(fontBytes []byte, size float64) (font.Face, error) {
 	parsedFont, err := truetype.Parse(fontBytes)
 
